@@ -10,3 +10,5 @@ create table item (
   user_id int unsigned not null,
   foreign key(user_id) references user(id)
 );
+
+
