@@ -2,17 +2,21 @@ const express = require("express");
 
 const router = express.Router();
 
+const { SaySomething } = require("../../controllers/sayActions");
+
+router.get("/", SaySomething);
+
 /* ************************************************************************* */
 // Import And Use Routers Here
 /* ************************************************************************* */
 
-const { SaySomething } = require("../../controllers/sayActions");
+const categoriesRouter = require("./categories/router");
 
-const { browse } = require("../../controllers/programActions");
+router.use("/categories", categoriesRouter);
 
-router.get("/", SaySomething);
+const programsRouter = require("./programs/router");
 
-router.get("/programs", browse);
+router.use("/programs", programsRouter);
 
 const itemsRouter = require("./items/router");
 
